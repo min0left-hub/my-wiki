@@ -24,7 +24,7 @@ git -c credential.helper= clone --depth 1 https://github.com/min0left-hub/my-wik
 | 언제 | 읽고 참조할 파일 | 참조 이유와 허용 범위 |
 |---|---|---|
 | 참가자가 과제를 해석한 뒤 검토·질문만 요청 | 실제 과제 README·관련 제공 자료·전달된 담당자 답 | 해석의 근거와 빠진 조건을 확인합니다. 요청한 검토·질문까지만 하며 기획 문서·코드·테스트는 만들지 않습니다. |
-| 기획·요구사항 문서 정리를 요청 | [requirements-planning Skill](.agents/skills/requirements-planning/SKILL.md), 필요할 때 [요구사항 양식](templates/REQUIREMENTS.md) | 필수·우선·미확인·참가자 결정·AI 제안을 구분하고 동작 흐름과 진행 상태를 정리합니다. 기획 승인을 구현 승인으로 취급하지 않습니다. |
+| 기획·요구사항 문서 정리를 요청 | [requirements-planning Skill](.agents/skills/requirements-planning/SKILL.md), 필요할 때 [요구사항 양식](templates/REQUIREMENTS.md) | 필수·우선·미확인·참가자 결정·AI 제안을 구분하고 동작 흐름과 진행 상태를 정리합니다. 웹서비스이면 사용자·권한·화면·업로드·내보내기·저장과 병렬 분담을 필요한 만큼 정리하며, 업로드 실제 검증은 verify-work를 참조합니다. 기획 승인을 구현 승인으로 취급하지 않습니다. |
 | 담당자 답·참가자 결정이 바뀌어 문서 반영을 요청 | requirements-planning Skill과 기존 요구사항·결정 문서 | 변경 출처, 기존 내용과의 차이, 구현·검증 영향을 반영합니다. 확정된 답을 다시 묻거나 코드까지 임의로 고치지 않습니다. |
 | 구현을 명시적으로 지시 | 확정된 실제 요구사항·관련 결정·현재 코드·실행 방법 | 승인된 작은 기능을 구현하기 위해 읽습니다. 기획 Skill을 다시 돌리거나 새 기능·구조·도구를 임의로 추가하지 않습니다. 승인 범위에 필요한 통상 검증은 진행할 수 있습니다. |
 | 데이터 분석·그래프·대시보드 작업을 요청 | [analyze-data Skill](.agents/skills/analyze-data/SKILL.md), 관련 원본·열 설명·확정 집계 기준 | 데이터 품질·단위·기간·분모·제외 기준을 확인하고 요청한 분석·시각화만 합니다. 분석 방법만 요청했다면 계산·화면 구현으로 넘어가지 않습니다. |
@@ -56,7 +56,7 @@ my-wiki/README.md의 읽기 규칙을 따라,
 ## 구성
 - [AGENTS.md](AGENTS.md): 공통 원칙과 승인 경계
 - [START_PROMPT.md](START_PROMPT.md): 새 세션에서 읽을 시작 지침
-- [.agents/skills/requirements-planning/SKILL.md](.agents/skills/requirements-planning/SKILL.md): 경량 기획·요구사항 정리
+- [.agents/skills/requirements-planning/SKILL.md](.agents/skills/requirements-planning/SKILL.md): 경량 기획·웹서비스 요구사항·업로드/내보내기·병렬 작업 정리
 - [.agents/skills/analyze-data/SKILL.md](.agents/skills/analyze-data/SKILL.md): 요청받은 데이터 분석·그래프·대시보드의 데이터 품질·집계·시각화 점검
 - [.agents/skills/verify-work/SKILL.md](.agents/skills/verify-work/SKILL.md): 실제 결과 검증
 - [.agents/skills/fix-errors/SKILL.md](.agents/skills/fix-errors/SKILL.md): 실패 재현·원인 확인·최소 수정
@@ -85,7 +85,7 @@ Codex는 담당자와 나눈 대화를 자동으로 읽거나 실시간으로 �
 ### Skill 5개
 | Skill | 필요한 이유·사용 목적 | 한계 |
 |---|---|---|
-| requirements-planning | 참가자의 해석·과제 자료·참가자가 전달한 담당자 답을 바탕으로 필수·우선·미확인·성공 조건과 동작 흐름을 정리합니다. 구현 상태와 검증 상태를 구분합니다. | 담당자 대화를 직접 볼 수 없습니다. 전달 내용이 빠지거나 틀리면 문서도 틀릴 수 있습니다. 문서 작성은 구현·검증 완료가 아닙니다. |
+| requirements-planning | 참가자의 해석·과제 자료·참가자가 전달한 담당자 답을 바탕으로 필수·우선·미확인·성공 조건과 동작 흐름, 웹서비스의 역할·화면·업로드/내보내기·저장·병렬 작업 범위를 정리합니다. 구현 상태와 검증 상태를 구분하며 업로드 실제 검증은 verify-work에 연결합니다. | 담당자 대화를 직접 볼 수 없습니다. 전달 내용이 빠지거나 틀리면 문서도 틀릴 수 있습니다. 문서 작성은 구현·검증 완료가 아닙니다. |
 | analyze-data | 계산·그래프 전에 빈값·중복·단위·기간·분모·제외 기준을 확인하고 승인된 분석·시각화를 수행합니다. 업무 기준은 자료와 전달받은 담당자 답에 근거합니다. | 미정인 업무 규칙을 데이터만으로 확정할 수 없습니다. 분석 결과만으로 실제 고장 원인이나 인과관계를 단정하지 못합니다. |
 | verify-work | 요구사항에서 독립적으로 정한 기대값과 실제 결과를 비교하고 정상·경계·오류 및 단계 간 연결을 확인합니다. 제공 테스트·AI 추가 테스트, AI 실행·참가자 직접 확인·탁상 검토를 구분합니다. | 요구사항 자체가 잘못 전달되면 잘못된 기준으로 검증할 수 있습니다. 일부 테스트 통과가 전체 정확성을 보장하지 않으며 실제 보지 않은 화면을 확인했다고 할 수 없습니다. |
 | fix-errors | 전달받은 증상·오류 메시지와 허용된 코드·환경을 바탕으로 실패를 재현하고 원인을 좁혀 최소 수정 후 재검증합니다. | 전달되지 않은 외부 화면·상황을 자동으로 알 수 없습니다. 재현 조건이 부족하면 원인을 확정하기 어렵고 코드 수정만으로 해결됐다고 판단할 수 없습니다. |
