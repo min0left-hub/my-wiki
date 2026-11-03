@@ -1,6 +1,15 @@
-# my_hackton_wiki
+# my-wiki
 
 AI와 과제를 진행할 때 참가자의 판단을 보존하고, 요구사항·결정·진행·검증을 파일로 이어가는 공개 준비 도구함입니다. 공식 시험 지침·정답·자동 기억 동기화 서비스가 아닙니다.
+
+## 다운로드
+저장소 주소: [min0left-hub/my-wiki](https://github.com/min0left-hub/my-wiki)
+
+일반 터미널의 실제 프로젝트 폴더에서 실행합니다. 공개 저장소이므로 새 외부 로그인을 하지 않습니다.
+```text
+git -c credential.helper= clone --depth 1 https://github.com/min0left-hub/my-wiki.git
+```
+다운로드된 폴더 이름은 `my-wiki`입니다. 아래 시작 프롬프트도 이 폴더 이름을 기준으로 합니다. 이미 받은 폴더는 덮어쓰거나 중첩 clone하지 말고 기존 위치와 변경 사항을 먼저 확인합니다.
 
 ## 가장 먼저 읽을 파일
 이 README를 읽은 코딩 에이전트는 다른 Skill·양식보다 아래 두 파일을 먼저 순서대로 읽고 적용합니다.
@@ -37,7 +46,7 @@ AI와 과제를 진행할 때 참가자의 판단을 보존하고, 요구사항�
 
 ## 처음 Codex에 보낼 문장
 ```text
-my_hackton_wiki/README.md의 읽기 규칙을 따라,
+my-wiki/README.md의 읽기 규칙을 따라,
 먼저 AGENTS.md와 START_PROMPT.md를 순서대로 읽고 적용해.
 실제 과제 README·제공 자료와 도구함 설명을 구분해.
 지금은 읽기 성공 여부만 알리고 내 과제 해석을 기다려.
